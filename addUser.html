@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="addUser.php" method="POST">
+	<table>
+	<tr><td>Username</td>
+	<td><input type="text" name="username"/></td>
+	<tr><td>Password</td>
+	<td><input type="text" name="password"/></td>
+	<tr><td>Roles</td>
+	<td>
+	<select name="role" id="role">
+	<option value="admin">Admin</option>
+	<option value="user">User</option>
+	</select>
+	</td>
+	<tr><td>Status</td>
+	<td>
+	<select name="status" id="status">
+	<option value="active">Active</option>
+	<option value="inactive">Inactive</option>
+	</select>
+	</td>
+	<tr><td>Email</td>
+	<td>
+	<input type="text" name="email" />
+	</td>
+	</tr>
+	</table>
+	<tr><td><button type="submit" name="submit">Add</button></td></tr>
+</form>
+</body>
+</html>

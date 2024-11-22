@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selling Drug and Pharmacy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Container */
+        .top-bar {
+            background: linear-gradient(90deg, #0056d2, #0078ff);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-bar .left img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .top-bar .left h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .top-bar .right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-bar .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .top-bar .right a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0056d2;
+        }
+
+        .search-bar input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            background-color: #0056d2;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .nav-bar {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-bar a {
+            color: #333;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .main-content {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Cấu trúc thẻ sản phẩm */
+        .card {
+            width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hình ảnh sản phẩm */
+        .card img {
+            width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tên sản phẩm */
+        .card h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Mô tả sản phẩm */
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Giá sản phẩm */
+        .card p:nth-of-type(2) {
+            font-size: 16px;
+            color: #0078d4;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Nút bấm */
+        .card a, .card button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .card a {
+            color: #0078d4;
+            border: 1px solid #0078d4;
+            background-color: transparent;
+        }
+
+        .card a:hover {
+            background-color: #0078d4;
+            color: white;
+        }
+
+        .card button {
+            background-color: #0056d2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #003f91;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0056d2;
+            color: white;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            align-items: start;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Các mục trong footer */
+        .footer-section {
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 5px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        /* Các icon mạng xã hội */
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #ffd700;
+        }
+
+        /* Dòng bản quyền */
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="left">
+            <img alt="Logo" height="40" src="https://img.lovepik.com/element_origin_pic/18/03/23/b090f88f3db93895f307815e471e8027.png_wh860.png" width="40"/>
+            <h1>ADBS Pharmacy </h1>
+        </div>
+        <div class="right">
+            <a href="loginpharmacy.html"><i class="fas fa-user"></i> ADMIN</a>
+            <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+    </div>
+
+    <form class="search-bar" method="GET" action="searchproduct.php">
+        <input type="text" name="search" placeholder="Nhập từ khóa tìm kiếm..." required>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <div class="nav-bar">
+        <a href="#">Functional Foods</a>
+        <a href="#">Cosmetics</a>
+        <a href="#">Medicines</a>
+        <a href="#">Personal Care</a>
+        <a href="#">Medical Devices</a>
+        <a href="#">Vaccination</a>
+        <a href="#">Diseases</a>
+        <a href="#">Health Corner</a>
+        <a href="#">Pharmacy System</a>
+    </div>
+
+    <!-- Phần nội dung chính thứ nhất -->
+    <div class="main-content">
+        <div class="banner">
+            <img alt="banner" src="https://prod-cdn.pharmacity.io/e-com/images/landing-pages/20241030040815-0-4.png?versionId=YF4bjJLlJ7MjNxVKhg0HEMZwkVhhQ6uz" />
+        </div>
+        <div class="card">
+            <img alt="Product 1" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P26079.png" />
+            <h3>Viên uống WELSON BEAUTY Hyaluron Vita Boost 240mg</h3>
+            <p>Hỗ trợ cấp ẩm đẹp da (Hộp 60 viên).</p>
+            <p>Price: 795,000 VND</p>
+            <a href="getproduct.php?id=8">Details</a>
+            <button onclick="addToCart(8)">Add to cart</button>
+        </div>
+        <!-- Các thẻ card khác -->
+        <div class="card">
+            <img alt="Product 2" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P26084_1.jpg" />
+            <h3>Viên uống BLISSBERRY Pureskin Whitening Collagen 2in1</h3>
+            <p>Hỗ trợ làm đẹp da (Hộp 60 viên).</p>
+            <p>Price: 414,000 VND</p>
+            <a href="getproduct.php?id=9">Details</a>
+            <button onclick="addToCart(9)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 3" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P25539_1.jpg" />
+            <h3>Viên uống Omexxel Visionhop</h3>
+            <p>Bổ mắt, hỗ trợ cải thiện thị lực (Hộp 3 vỉ x 10 viên).</p>
+            <p>Price: 323,000 VND</p>
+            <a href="getproduct.php?id=10">Details</a>
+            <button onclick="addToCart(10)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 4" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P26086_1.jpg" />
+            <h3>Viên uống BLISSBERRY Purehealth Cholesterol Care K22</h3>
+            <p>Giúp giảm cholesterol trong máu (60 viên).</p>
+            <p>Price: 690,000 VND</p>
+            <a href="getproduct.php?id=11">Details</a>
+            <button onclick="addToCart(11)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 5" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P26085_1.png" />
+            <h3>Viên uống BLISSBERRY Purehealth Immune K22</h3>
+            <p>Hỗ trợ tăng cường đề kháng (Hộp 60 viên).</p>
+            <p>Price: 690,000 VND</p>
+            <a href="getproduct.php?id=12">Details</a>
+            <button onclick="addToCart(12)">Add to cart</button>
+        </div>
+    </div>
+
+    <!-- Phần nội dung chính thứ hai -->
+    <div class="main-content">
+        <div class="banner">
+            <img alt="banner" src="https://prod-cdn.pharmacity.io/e-com/images/landing-pages/20241118043525-0-happy2111.png?versionId=jlsg5jVfcsrWuGvv_Mg_IhBvQJtJsEZW" />
+        </div>
+        <div class="card">
+            <img alt="Product 6" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P07339_4.jpg" />
+            <h3>Dung dịch Optive UD 0.4ml</h3>
+            <p>Giảm tình trạng khô mắt và khó chịu sau phẫu thuật (30 ống x 0.4ml)</p>
+            <p>Price: 190,000 VND</p>
+            <a href="getproduct.php?id=13">Details</a>
+            <button onclick="addToCart(13)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 7" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P27559_2.jpg" />
+            <h3>Viên uống OPTIBAC Pregnancy Probiotics</h3>
+            <p>Bổ sung lợi khuẩn cho mẹ bầu (Hộp 30 viên)</p>
+            <p>Price: 423,000 VND</p>
+            <a href="getproduct.php?id=14">Details</a>
+            <button onclick="addToCart(14)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 8" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P15863.png" />
+            <h3>Viên nang Bisbeta 120mg SPM</h3>
+            <p>Hỗ trợ giảm nhẹ calo trong điều trị béo phì, thừa cân (2 vỉ x 21 viên)</p>
+            <p>Price: 189,000 VND</p>
+            <a href="getproduct.php?id=15">Details</a>
+            <button onclick="addToCart(15)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 9" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P00938.png" />
+            <h3>Viên đặt âm đạo Fluomizin 10mg</h3>
+            <p>Điều trị nhiễm nấm âm đạo, nhiễm khuẩn âm đạo (1 vỉ x 6 viên)</p>
+            <p>Price: 120,000 VND</p>
+            <a href="getproduct.php?id=16">Details</a>
+            <button onclick="addToCart(16)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 10" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P14387_1_l.webp" />
+            <h3>Viên nang Livosil 140mg</h3>
+            <p>Điều trị viêm gan, xơ gan (8 vỉ x 15 viên)</p>
+            <p>Price: 103,000 VND</p>
+            <a href="getproduct.php?id=17">Details</a>
+            <button onclick="addToCart(17)">Add to cart</button>
+        </div>
+    </div>
+
+    <!-- Phần nội dung chính thứ ba -->
+    <div class="main-content">
+        <div class="banner">
+            <img alt="banner" src="https://prod-cdn.pharmacity.io/e-com/images/landing-pages/20241030041000-0-1.png?versionId=BTBSpSB5TVGNS0xqCxOmoTNtasm6S7gG" />
+        </div>
+        <div class="card">
+            <img alt="Product 11" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P04931_1_l.webp" />
+            <h3>Thuốc dùng ngoài Contractubex 50g</h3>
+            <p>Điều trị sẹo lồi, sẹo phì đại (tuýp 50g)</p>
+            <p>Price: 250,000 VND</p>
+            <a href="getproduct.php?id=18">Details</a>
+            <button onclick="addToCart(18)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 12" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/20240528093228-0-P18080_1.jpg" />
+            <h3>Nước Súc Miệng Trẻ Em LISTERINE</h3>
+            <p>Vị Không Cay (Chai 250ml)</p>
+            <p>Price: 55,000 VND</p>
+            <a href="getproduct.php?id=19">Details</a>
+            <button onclick="addToCart(19)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 13" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/P08791.png" />
+            <h3>Gel bôi URGO Mouth Ulcers</h3>
+            <p>Hỗ trợ điều trị nhiệt miệng và vết thương nhỏ trong khoang miệng (Hộp 6ml)</p>
+            <p>Price: 121,000 VND</p>
+            <a href="getproduct.php?id=20">Details</a>
+            <button onclick="addToCart(20)">Add to cart</button>
+        </div>
+        <div class="card">
+            <img alt="Product 14" src="https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/ecommerce/20241021015521-1-P18263_1.jpg" />
+            <h3>Viên uống Rohto Lutein V5</h3>
+            <p>Hỗ trợ sáng mắt (Hộp 30 viên)</p>
+            <p>Price: 333,000 VND</p>
+            <a href="getproduct.php?id=21">Details</a>
+            <button onclick="addToCart(21)">Add to cart</button>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(productId) {
+            fetch('add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'id=' + productId
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                } else {
+                    alert('Có lỗi xảy ra: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng.');
+            });
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <h4>Customer Support</h4>
+            <p>Hotline: <a href="tel:19001234">1900 1234</a></p>
+            <p>Email: <a href="mailto:support@pharmacy.vn">support@pharmacy.vn</a></p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/PharmacityVN"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/channel/UC34rPqjyb_WCq6dMu2khYQA"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pharmacy Selling. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
