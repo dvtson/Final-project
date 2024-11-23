@@ -12,7 +12,10 @@ echo "<!DOCTYPE html>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0056d2, #0078ff);
+            background-image: url('https://raw.githubusercontent.com/adi1090x/files/master/dynamic-wallpaper/main.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,7 +25,7 @@ echo "<!DOCTYPE html>
             color: #fff;
         }
         .container {
-            background: #fff;
+            background: rgba(0, 0, 0, 0.5);
             color: #333;
             width: 100%;
             max-width: 400px;
@@ -33,13 +36,14 @@ echo "<!DOCTYPE html>
         }
         h1 {
             font-size: 24px;
-            color: #0056d2;
+            color: #fff;
             margin-bottom: 20px;
         }
         .welcome {
             font-size: 18px;
             font-weight: 500;
             margin-bottom: 20px;
+			color: #fff
         }
         a {
             display: block;
