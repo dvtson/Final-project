@@ -14,7 +14,10 @@ echo "<!DOCTYPE html>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0056d2, #0078ff);
+            background-image: url('https://raw.githubusercontent.com/adi1090x/files/master/dynamic-wallpaper/main.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             margin: 0;
             padding: 20px;
             color: #fff;
